@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
-function Login() {
+import { useState } from 'react';
+
+function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/users/', {
+      const response = await fetch('http://127.0.0.1:8000/api/admins/', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -21,19 +22,20 @@ function Login() {
       });
 
       if (response.ok) {
-        const users = await response.json();
-        const user = users.find(user => user.email === email && user.password === password);
+        const admins = await response.json();
+        const admin = admins.find(admin => admin.email === email && admin.password === password);
 
-        if (user) {
-          console.log('Login successful, user:', user); 
+        if (admin) {
+          console.log('Login successful, admin:', admin);  // Log the successful response data
+          localStorage.setItem('accessToken', 'your-jwt-token');  // Store JWT token in localStorage
           toast.success('Login successful');
-          navigate('/home');
+          navigate('/Dashboard');
         } else {
           console.log('Invalid email or password');
           toast.error('Invalid email or password');
         }
       } else {
-        console.log('Error fetching user data');
+        console.log('Error fetching admin data');
         toast.error('Login failed');
       }
     } catch (error) {
@@ -44,19 +46,10 @@ function Login() {
 
   return (
     <div className="container-fluid vh-100">
-      <ToastContainer/>
       <div className="row h-100">
-        <div 
-          className="col-md-6 d-none d-md-flex align-items-center justify-content-center" 
-          style={{ 
-            background: 'url("https://img.freepik.com/premium-photo/children-toys-background_996086-8899.jpg") no-repeat center center', 
-            backgroundSize: 'cover' 
-          }}
-        >
-        </div>
         <div className="col-md-6 d-flex align-items-center justify-content-center">
           <div className="card p-4" style={{ width: '80%' }}>
-            <h2 className="text-center">Login</h2>
+            <h2 className="text-center">ADMIN Login</h2>
             <form onSubmit={handleLogin}>
               <div className="form-group row">
                 <label htmlFor="email" className="col-sm-3 col-form-label">Email</label>
@@ -87,15 +80,16 @@ function Login() {
               <div className="text-center">
                 <button type="submit" className="btn btn-primary">Login</button>
                 <br /><br />
-                <Link to="/Signup" className="btn btn-link">Don't have an account?</Link>
-                <Link to="/admin" className="btn btn-link">Admin</Link>
+                <Link to="/login" className="btn btn-link">Not an Admin?</Link>
               </div>
             </form>
           </div>
+        </div>
+        <div className="col-md-6 d-none d-md-flex align-items-center justify-content-center" style={{ background: 'url("https://img.freepik.com/premium-photo/children-toys-background_996086-8899.jpg") no-repeat center center', backgroundSize: 'cover' }}>
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default AdminLogin;

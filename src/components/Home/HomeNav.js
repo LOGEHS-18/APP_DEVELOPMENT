@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
+import { FaShoppingCart } from 'react-icons/fa';
 
-const Navbar = () => {
+const HNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -22,23 +23,26 @@ const Navbar = () => {
               <Link className="nav-link" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">About</Link>
+              <Link className="nav-link" to="/orderPage">Orders</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/products">Contact-Us</Link>
+              <Link className="nav-link" to="/products">Products</Link>
             </li>
           </ul>
           <div className="d-flex align-items-center">
+          <Link to="/cart" className="me-3">
+            <FaShoppingCart size={30} />
+          </Link>
             <DropdownButton
               align="end"
               title={<FaUserCircle size={30} />}
               id="dropdown-menu-align-end"
               variant="outline-secondary"
             >
-              <Dropdown.Item as={Link} to="/login">Login</Dropdown.Item>
-              <Dropdown.Item as={Link} to="/signup">Signup</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/profile">Profile</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/">Dashboard</Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item href="/admin">Admin</Dropdown.Item>
+              <Dropdown.Item href="/">LogOut</Dropdown.Item>
             </DropdownButton>
           </div>
         </div>
@@ -47,4 +51,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default HNavbar;

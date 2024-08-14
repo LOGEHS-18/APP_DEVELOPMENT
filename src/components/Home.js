@@ -1,68 +1,48 @@
-// src/components/Blog.js
 import React from 'react';
+import "./Home.css";
+import { Link } from 'react-router-dom';
+import Footer from './Footer';
+import Navbar from './Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-function Blog() {
+const Blog = () => {
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-lg-8">
-          <h1 className="mb-4">Blog Title</h1>
-          <div className="mb-4">
-            <h2 className="h5">Blog Post Title</h2>
-            <p className="text-muted">Posted on January 1, 2024 by Admin</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <a href="#" className="btn btn-primary">Read More</a>
-          </div>
-          <div className="mb-4">
-            <h2 className="h5">Another Blog Post Title</h2>
-            <p className="text-muted">Posted on February 2, 2024 by Admin</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <a href="#" className="btn btn-primary">Read More</a>
-          </div>
-          <div className="mb-4">
-            <h2 className="h5">Another Blog Post Title</h2>
-            <p className="text-muted">Posted on February 2, 2024 by Admin</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <a href="#" className="btn btn-primary">Read More</a>
-          </div>
-          {/* Add more blog posts as needed */}
+    <div>
+    <Navbar />
+    <div className="container1">
+      <img src="https://cdn.shopify.com/s/files/1/1288/8361/files/lego_banner.png?3512030035680509934" alt="Toy Logo" className="image" />
+      <Link to="/login" className="button">Shop Your Toys!</Link><br></br><br></br>
+      <div className="content">
+        <div className="left">
+          <br></br>
+          <br></br>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5jNjYe2z6YuLOhQewZTfafc2WjkltQnVC2GDBJvMKSuUrvkCVlCZtYMckYF4u9Texgx8&usqp=CAU" alt="Toy Factory" className="image-left" />
         </div>
-        <div className="col-lg-4">
-          <div className="p-4 mb-4 bg-light rounded">
-            <h4 className="font-italic">About</h4>
-            <p className="mb-0">This is a simple blog page using React and Bootstrap. You can add more content and customize it as needed.</p>
+        <div className="right">
+          <h2>About Us</h2>
+          <p style={{ textAlign: 'justify' }}>At FunToys, we're passionate about creating toys that inspire creativity and imagination. Our team of designers and manufacturers work tirelessly to bring you the best toys possible. We're committed to using only the safest and highest-quality materials, ensuring that every toy meets rigorous safety standards. Our toys are not just products; they are tools that help children learn, grow, and explore their world. We believe in the power of play and its ability to shape young minds positively. From concept to creation, every step of our process is infused with care and dedication, aiming to spark joy and wonder in children everywhere. Our diverse range of toys, from classic favorites to innovative new designs, caters to children of all ages and interests. We're proud to say that our toys are loved by children all around the world, and we are constantly striving to bring more joy, laughter, and learning to families everywhere. Join us on our mission to make the world a more playful place, one toy at a time.</p>
+
           </div>
-          <div className="p-4">
-            <h4 className="font-italic">Archives</h4>
-            <ol className="list-unstyled mb-0">
-              <li><a href="#">March 2024</a></li>
-              <li><a href="#">February 2024</a></li>
-              <li><a href="#">January 2024</a></li>
-              {/* Add more archive links as needed */}
-            </ol>
-          </div>
-          <div className="p-4">
-            <h4 className="font-italic">Elsewhere</h4>
-            <ol className="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-            </ol>
-          </div>
+      </div>
+      <div className="links">
+        <div className="left-links">
+          <ul>
+            <li><a href="#">Our Toys</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div className="right-links">
+          <ul>
+            <li><a href="#" target="_blank"><i className="bi bi-facebook"></i> Follow us on Facebook!</a></li>
+            <li><a href="#" target="_blank"><i className="bi bi-twitter"></i> Follow us on Twitter!</a></li>
+            <li><a href="#" target="_blank"><i className="bi bi-instagram"></i> Follow us on Instagram!</a></li>
+          </ul>
         </div>
       </div>
+      <Footer/>
+    </div>
     </div>
   );
-}
+};
 
 export default Blog;

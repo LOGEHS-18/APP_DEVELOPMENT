@@ -7,12 +7,13 @@ const ThemeToggle = () => {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
 
+
   const toggleTheme = () => {
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
 
   return (
-    <button className="btn btn-secondary" onClick={toggleTheme}>
+    <button className="button mb-3" onClick={toggleTheme}>
       Toggle Theme
     </button>
   );

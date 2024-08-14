@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
@@ -19,26 +19,30 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/home">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">About</Link>
+              <Link className="nav-link" to="/order">Orders</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/products">Contact-Us</Link>
+              <Link className="nav-link" to="/products">Products</Link>
             </li>
           </ul>
           <div className="d-flex align-items-center">
+            <Link to="/cart" className="btn btn-outline-secondary me-2">
+              <FaShoppingCart size={20} />
+            </Link>
             <DropdownButton
               align="end"
               title={<FaUserCircle size={30} />}
               id="dropdown-menu-align-end"
               variant="outline-secondary"
             >
-              <Dropdown.Item as={Link} to="/login">Login</Dropdown.Item>
-              <Dropdown.Item as={Link} to="/signup">Signup</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/profile">Profile</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/orders">Orders</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/settings">Settings</Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item href="/admin">Admin</Dropdown.Item>
+              <Dropdown.Item href="/">Logout</Dropdown.Item>
             </DropdownButton>
           </div>
         </div>
